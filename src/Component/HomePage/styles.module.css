@@ -1,0 +1,53 @@
+/* home carousel */
+@media (max-width:1024px) {
+  .carousel_container{
+    width: 100%;
+    border: 1px solid gray;
+    height: 240px;
+  }
+}
+
+.thumbContainer {
+  display: flex; 
+  justify-content: space-evenly;
+  overflow-x: auto; 
+  gap: 16px;  
+  padding: 8px;  
+  margin: 8px;
+  white-space: nowrap; 
+  border: 1px solid rgb(190, 186, 186);
+  border-radius: 3px;
+
+}
+  
+.thumbCard {
+  display: inline-flex; 
+  flex-direction: column;  
+  align-items: center; 
+  min-width: 100px;  
+  text-align: center;
+
+}
+
+.thumbImage {
+  width: 40px;  
+  height: auto;  
+  margin-bottom: 8px;
+}
+
+.thumbTitle {
+  font-size: 14px;
+  margin: 0;
+}
+
+ @media (max-width: 1024px) {
+  .thumbImage {
+    display: none; 
+  }
+
+  .thumbTitle {
+    font-size: 12px; 
+  }
+}
+
+
