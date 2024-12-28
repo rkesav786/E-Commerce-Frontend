@@ -7,14 +7,14 @@ export const ThumbCard = () => {
   return (
     <div className={styles.thumbContainer}>
       {/* Card 1 */}
-      <Link to="/grocery">
+      <Link to="/grocery-section">
         <div className={styles.thumbCard}>
           <img className={styles.thumbImage} src={thumbimage} alt="Grocery" />
           <h4 className={styles.thumbTitle}>Grocery</h4>
         </div>
       </Link>
       {/* Card 2 */}
-      <Link to="mobile-phones">
+      <Link to="mobile-section">
         <div className={styles.thumbCard}>
           <img
             className={styles.thumbImage}
@@ -25,7 +25,7 @@ export const ThumbCard = () => {
         </div>
       </Link>
       {/* Card 3 */}
-      <Link to="electronics">
+      <Link to="electronics-section">
         <div className={styles.thumbCard}>
           <img
             className={styles.thumbImage}
@@ -36,14 +36,14 @@ export const ThumbCard = () => {
         </div>
       </Link>
       {/* Card 4 */}
-      <Link to="appliance">
+      <Link to="appliance-section">
         <div className={styles.thumbCard}>
           <img className={styles.thumbImage} src={thumbimage} alt="Appliance" />
           <h4 className={styles.thumbTitle}>Appliance</h4>
         </div>
       </Link>
       {/* Card 5 */}
-      <Link to="furnitures">
+      <Link to="furniture-section">
         <div className={styles.thumbCard}>
           <img
             className={styles.thumbImage}
@@ -54,7 +54,7 @@ export const ThumbCard = () => {
         </div>
       </Link>
       {/* Card 6 */}
-      <Link to="fashion">
+      <Link to="fashion-section">
         <div className={styles.thumbCard}>
           <img className={styles.thumbImage} src={thumbimage} alt="Fashion" />
           <h4 className={styles.thumbTitle}>Fashion</h4>

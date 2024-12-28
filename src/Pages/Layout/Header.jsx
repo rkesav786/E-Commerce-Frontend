@@ -11,8 +11,8 @@ export const Header = () => {
         style={{ top: 0, zIndex: 1030 }}
       >
         <div class="container-fluid">
-          <a class="navbar-brand" href="javascript:void(0)">
-            <img src={logo} alt="" />
+          <a class="navbar-brand ms-2" href="javascript:void(0)">
+            <img src="./vetrikart_logo.png" alt="" width={50} />
           </a>
           <button
             class="navbar-toggler"

@@ -1,17 +1,26 @@
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import style from "./style.module.css";
 import { CiStar } from "react-icons/ci";
 
-export const MobileCard = ({ title }) => {
+export const MobileCard = ({ title, productDetailsProps }) => {
   const scrollRef = useRef(null);
 
-  // Scroll handler functions
   const scrollLeft = () => {
     scrollRef.current.scrollBy({ left: -200, behavior: "smooth" });
   };
 
   const scrollRight = () => {
     scrollRef.current.scrollBy({ left: 200, behavior: "smooth" });
+  };
+
+  const productDetails = productDetailsProps || {
+    name: "Samsung S23 Ultra Max",
+    description: "(Titanium Yellow, 256GB)",
+    rating: 4.5,
+    price: 125000,
+    originalPrice: 149000,
+    imageUrl: "/samsungs23ultra.webp",
   };
 
   return (
@@ -30,36 +39,34 @@ export const MobileCard = ({ title }) => {
           }}
           onClick={scrollLeft}
         >
-          &#8592; {/* Left arrow icon */}
+          &#8592;
         </button>
 
         {/* Card Container */}
-        <div
-          className="d-flex overflow-hidden"
-          style={{ scrollBehavior: "smooth" }}
-          ref={scrollRef}
-        >
+        <div className="d-flex overflow-hidden" ref={scrollRef}>
           {Array.from({ length: 10 }).map((_, index) => (
-            <div
+            <Link
+              to="/product-details"
+              state={productDetailsProps ? productDetailsProps : productDetails} // Passing product details through state
               key={index}
               className="card border-0 mx-2 mb-3 mt-1"
-              style={{ width: 190, flexShrink: 0 }}
+              style={{ width: 190, flexShrink: 0, textDecoration: "none" }}
             >
               <img
                 className="card-img-top p-3"
-                src="/samsungs23ultra.webp"
+                src={productDetails.imageUrl}
                 alt="Card image"
               />
               <div className="card-body text-center m-0 p-0">
                 <h4 className={`card-title m-0 p-0 ${style.card_title}`}>
-                  Samsung S23 Ultra Max
+                  {productDetails.name}
                 </h4>
                 <p className={`card-text m-0 p-0 ${style.card_title}`}>
-                  ( Titanium Yellow, 265GP )
+                  {productDetails.description}
                 </p>
                 <p className="m-0 p-0">
                   <span className="badge bg-success">
-                    4.5 <CiStar />
+                    {productDetails.rating} <CiStar />
                   </span>
                   <span className={`text-success ms-2 ${style.card_title}`}>
                     25 % off
@@ -67,14 +74,16 @@ export const MobileCard = ({ title }) => {
                 </p>
                 <div className="m-0 p-0">
                   <p className={`m-0 p-0 fw-bold ${style.card_title}`}>
-                    ₹ 1,25,000
+                    ₹ {productDetails.price}
                     <del>
-                      <span className="text-muted ms-2">₹ 1,49,000</span>
+                      <span className="text-muted ms-2">
+                        ₹ {productDetails.originalPrice}
+                      </span>
                     </del>
                   </p>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -90,7 +99,7 @@ export const MobileCard = ({ title }) => {
           }}
           onClick={scrollRight}
         >
-          &#8594; {/* Right arrow icon */}
+          &#8594;
         </button>
       </div>
     </>

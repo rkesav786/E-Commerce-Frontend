@@ -1,7 +1,12 @@
 import React from "react";
 import { CiStar } from "react-icons/ci";
+import { useLocation } from "react-router-dom";
 
 export const ProductDetails = () => {
+  const location = useLocation();
+  const { state } = location;
+  console.log("state :", state);
+
   return (
     <>
       <div>ProductDetails</div>

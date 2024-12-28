@@ -1,0 +1,25 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  main {
+    flex: 1;
+  }
+  
+  footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40; /* Optional: Background color for your footer */
+    color: white; /* Optional: Footer text color */
+    text-align: center;
+    padding: 10px 0;
+  }
+  

@@ -3,7 +3,7 @@ import { ThumbCard } from "../../Component/HomePage/ThumbCard";
 import { Carousel } from "../../Component/HomePage/Carousel";
 import { HomeCards } from "../../Component/HomePage/HomeCards";
 
-export const Home = () => {
+export const HomePage = () => {
   return (
     <>
       <div>

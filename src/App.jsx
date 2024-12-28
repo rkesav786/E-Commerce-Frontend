@@ -1,33 +1,42 @@
-import React from 'react'
+import React from "react";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Header } from "./Pages/Layout/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { MobilePhones } from "./Pages/MobilePhones/MobilePhones";
-import { Grocery } from "./Pages/Grocery/Grocery";
-import { Electronics } from "./Pages/Electronics/Electronics";
-import { Furniture } from "./Pages/Furniture/Furniture";
-import { Appliance } from "./Pages/Appliance/Appliance";
-import { Fashion } from "./Pages/Fashion/Fashion";
-import { Home } from "./Pages/Home/Home";
+import { MobileSection } from "./Pages/MobileSection";
+import { FurnitureSection } from "./Pages/FurnitureSection";
+import { GrocerySection } from "./Pages/GrocerySection";
+import { FashionSection } from "./Pages/FashionSection";
+import { ElectronicsSection } from "./Pages/ElectronicsSection";
+import { ApplianceSection } from "./Pages/ApplianceSection";
+import { HomePage } from "./Pages/HomePage";
+import Footer from "./Pages/Layout/Footer";
+import { ProductDetails } from "./Pages/MobileSection/ProductDetails";
 
 const App = () => {
   return (
-    <div>
+    <div id="root">
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/mobile-phones" element={<MobilePhones />} />
-          <Route path="/grocery" element={<Grocery />} />
-          <Route path="/electronics" element={<Electronics />} />
-          <Route path="/furnitures" element={<Furniture />} />
-          <Route path="/appliance" element={<Appliance />} />
-          <Route path="/fashion" element={<Fashion />} />
-        </Routes>
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/mobile-section" element={<MobileSection />} />
+            <Route path="/grocery-section" element={<GrocerySection />} />
+            <Route
+              path="/electronics-section"
+              element={<ElectronicsSection />}
+            />
+            <Route path="/furniture-section" element={<FurnitureSection />} />
+            <Route path="/appliance-section" element={<ApplianceSection />} />
+            <Route path="/fashion-section" element={<FashionSection />} />
+            <Route path="/product-details" element={<ProductDetails />} />
+          </Routes>
+        </main>
+        <Footer />
       </BrowserRouter>
     </div>
   );
 };
 
-export default App
+export default App;

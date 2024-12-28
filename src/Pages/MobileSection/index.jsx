@@ -1,7 +1,8 @@
 import React from "react";
 import { MobileCard } from "./MobileCard";
+import { ProductDetails } from "./ProductDetails";
 
-export const MobilePhones = () => {
+export const MobileSection = () => {
   return (
     <div className="w-100">
       <div className="row">
