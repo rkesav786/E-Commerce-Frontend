@@ -1,65 +1,47 @@
 import React from "react";
-import thumbimage from "/thumbimage.webp";
-import styles from "./styles.module.css";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import style from "./styles.module.css";
 
 export const ThumbCard = () => {
+  const category = [
+    { src: "grocery.webp", name: "Grocery", path: "grocery-section" },
+    { src: "iphone_15.webp", name: "Mobiles", path: "mobile-section" },
+    { src: "headphone.webp", name: "Electronics", path: "electronics-section" },
+    {
+      src: "electronicstvv.webp",
+      name: "Home & Appliance",
+      path: "appliance-section",
+      width: "80",
+    },
+    { src: "demofurniture.webp", name: "Furniture", path: "furniture-section" },
+    { src: "fashion.webp", name: "Fashion", path: "fashion-section" },
+  ];
+
   return (
-    <div className={styles.thumbContainer}>
-      {/* Card 1 */}
-      <Link to="/grocery-section">
-        <div className={styles.thumbCard}>
-          <img className={styles.thumbImage} src={thumbimage} alt="Grocery" />
-          <h4 className={styles.thumbTitle}>Grocery</h4>
-        </div>
-      </Link>
-      {/* Card 2 */}
-      <Link to="mobile-section">
-        <div className={styles.thumbCard}>
-          <img
-            className={styles.thumbImage}
-            src={thumbimage}
-            alt="Mobile Phone"
-          />
-          <h4 className={styles.thumbTitle}>Mobile Phone</h4>
-        </div>
-      </Link>
-      {/* Card 3 */}
-      <Link to="electronics-section">
-        <div className={styles.thumbCard}>
-          <img
-            className={styles.thumbImage}
-            src={thumbimage}
-            alt="Electronics"
-          />
-          <h4 className={styles.thumbTitle}>Electronics</h4>
-        </div>
-      </Link>
-      {/* Card 4 */}
-      <Link to="appliance-section">
-        <div className={styles.thumbCard}>
-          <img className={styles.thumbImage} src={thumbimage} alt="Appliance" />
-          <h4 className={styles.thumbTitle}>Appliance</h4>
-        </div>
-      </Link>
-      {/* Card 5 */}
-      <Link to="furniture-section">
-        <div className={styles.thumbCard}>
-          <img
-            className={styles.thumbImage}
-            src={thumbimage}
-            alt="Furnitures"
-          />
-          <h4 className={styles.thumbTitle}>Furnitures</h4>
-        </div>
-      </Link>
-      {/* Card 6 */}
-      <Link to="fashion-section">
-        <div className={styles.thumbCard}>
-          <img className={styles.thumbImage} src={thumbimage} alt="Fashion" />
-          <h4 className={styles.thumbTitle}>Fashion</h4>
-        </div>
-      </Link>
+    <div className="ms-3 me-3" style={{ background: "white" }}>
+      <div className="row m-2">
+        {category.map((item, index) => (
+          <div className="col-4 col-sm-2 text-center" key={index}>
+            <Link
+              to={`/${item.path}`} // Use the path dynamically
+              className={`d-flex flex-column align-items-center h-100 ${style.catagory_item}`}
+              style={{ textDecoration: "none", color: "inherit" }} // Optional: Preserve default styling
+            >
+              <div>
+                <img
+                  className="mt-2 img-fluid"
+                  src={item.src}
+                  alt={item.name}
+                  width={item.width || 60}
+                />
+              </div>
+              <div className="mt-auto">
+                <p className="mt-1 fw-bold">{item.name}</p>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

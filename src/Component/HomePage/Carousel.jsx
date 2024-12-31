@@ -6,7 +6,7 @@ import styles from "./styles.module.css";
 
 export const Carousel = () => {
   return (
-    <div>
+    <div className="ms-3 me-3">
       {/* <!-- Carousel --> */}
       <div id="demo" className={`carousel slide `} data-bs-ride="carousel">
         {/* <!-- Indicators/dots --> */}

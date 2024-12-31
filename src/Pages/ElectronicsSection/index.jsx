@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MobileCard } from "../MobileSection/MobileCard";
+import axios from "axios";
+
 export const ElectronicsSection = () => {
-  const productDetailsProps = {
-    name: "NeckBand",
-    description:
-      "(Finish Color - American Espresso, Delivery Condition - Knock Down)",
-    rating: 4.4,
-    price: 999,
-    originalPrice: 1280,
-    imageUrl: "/headphones.webp",
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/frontend/electronics-section"
+        );
+        setItems(response.data);
+        console.log("electronics-section :", response);
+      } catch (error) {
+        console.error("Error fetching items:", error);
+      }
+    };
+
+    fetchItems();
+  }, []);
+
+  // Filter data for each brand
+  const getBrandData = (brand) => {
+    return items.find((item) => item.section_name === brand)?.items || [];
   };
   return (
     <div>
@@ -231,13 +246,13 @@ export const ElectronicsSection = () => {
         <div className="col-9">
           <MobileCard
             title={"Best Of Deal Furniture"}
-            productDetailsProps={productDetailsProps}
+            sectionbrandcollection={getBrandData("SoundBar")}
           />
-          <MobileCard />
+          {/* <MobileCard />
           <MobileCard />
           <div className="mb-3">
             <MobileCard />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

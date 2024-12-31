@@ -5,64 +5,64 @@ import { useLocation } from "react-router-dom";
 export const ProductDetails = () => {
   const location = useLocation();
   const { state } = location;
-  console.log("state :", state);
+  const catalogue = state;
+
+  const calculateDiscount = () => {
+    const price = parseFloat(
+      catalogue.price?.toString().replace(/[^\d.]/g, "")
+    );
+    const offerPrice = parseFloat(
+      catalogue.offer_price?.toString().replace(/[^\d.]/g, "")
+    );
+    return price && offerPrice
+      ? Math.round(((price - offerPrice) / price) * 100)
+      : 0;
+  };
 
   return (
     <>
-      <div>ProductDetails</div>
+      {/* <div>ProductDetails</div> */}
       <div className="container">
         <div className="row">
           <div className="col-12 col-md-5">
             <div className="m-3 p-3 border img-fluid">
-              <img src="/samsungs23ultra.webp" alt="" />
+              <img src={catalogue.image.preview} alt="" />
             </div>
           </div>
           <div className="col-12 col-md-7">
-            <p className="mt-3  blockquote h4">
-              SAMSUNG Galaxy S24 Ultra 5G (Titanium Black, 256 GB) (12 GB RAM)
-            </p>
+            <p className="mt-3  blockquote h4">{catalogue.name}</p>
             <p>
               <span className="badge bg-success ">
-                4.5 <CiStar />
+                {catalogue.tag} <CiStar />
               </span>
-              <span className={`text-success ms-2`}>25 % off</span>
+              <span className={`text-success ms-2`}>
+                {calculateDiscount()} % off
+              </span>
             </p>
             <p className={`mb-2 p-0 fw-bold h4`}>
-              ₹ 1,25,000
+              ₹ {catalogue.offer_price}
               <del>
-                <span className="text-muted ms-2">₹ 1,49,000</span>
+                <span className="text-muted ms-2">₹ {catalogue.price}</span>
               </del>
             </p>
             <p>Available offers</p>
             <u className="text-decoration-none">
-              <li>
-                Bank Offer5% Unlimited Cashback on Flipkart Axis Bank Credit
-                CardT&C
-              </li>
-              <li>
-                Bank OfferFlat ₹450 off on HDFC Bank Credit Card EMI Txns on 3
-                months tenure, Min. Txn Value: ₹5000T&C
-              </li>
-              <li>
-                Bank OfferFlat ₹675 off on HDFC Bank Pixel Credit Card EMI on 3
-                months tenure, Min. Txn Value: ₹7,500T&C
-              </li>
-              <li>
-                Special PriceGet extra ₹35161 off (price inclusive of
-                cashback/coupon)T&C
-              </li>
+              <ul>
+                {catalogue.offer_texts?.map((item, index) => (
+                  <li key={index}>{item.offer_text}</li>
+                ))}
+              </ul>
             </u>
+
             <div className="row mt-4">
               <div className="col-3">
                 <p className="text-muted"> Highlight</p>
               </div>
               <div className="col-7">
                 <ul>
-                  <li>6 GB RAM | 128 GB ROM | Expandable Upto 1 TB</li>
-                  <li>16.76 cm (6.6 inch) Full HD+ Display</li>
-                  <li>50MP + 2MP + 2MP | 13MP Front Camera</li>
-                  <li>5000 mAh Lithium Ion Battery</li>
-                  <li>Exynos 1330 Processor</li>
+                  {catalogue.highlight_texts.map((item, index) => (
+                    <li key={index}>{item.highlight_text}</li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -79,15 +79,15 @@ export const ProductDetails = () => {
                   </tr>
                   <tr>
                     <th>Model Number</th>
-                    <td>SM-A146BDRHINS</td>
+                    <td>{catalogue.model_number}</td>
                   </tr>
                   <tr>
                     <th>Model Name</th>
-                    <td>Galaxy A14 5G</td>
+                    <td>{catalogue.model_name}</td>
                   </tr>
                   <tr>
                     <th>Color</th>
-                    <td>Dark Red</td>
+                    <td>{catalogue.product_color}</td>
                   </tr>
                   <tr>
                     <th>Browse Type</th>
@@ -95,11 +95,11 @@ export const ProductDetails = () => {
                   </tr>
                   <tr>
                     <th>SIM Type</th>
-                    <td>Dual Sim</td>
+                    <td>{catalogue.sim_type}</td>
                   </tr>
                   <tr>
                     <th>Hybrid Sim Slot</th>
-                    <td>Yes</td>
+                    <td>{catalogue.hybrid_sim_slot}</td>
                   </tr>
                   <tr>
                     <th>Touchscreen</th>
@@ -111,11 +111,11 @@ export const ProductDetails = () => {
                   </tr>
                   <tr>
                     <th>Quick Charging</th>
-                    <td>Yes</td>
+                    <td>{catalogue.quick_charging}</td>
                   </tr>
                   <tr>
                     <th>SAR Value</th>
-                    <td>0.442W/Kg</td>
+                    <td>{catalogue.sar_value}</td>
                   </tr>
                 </tbody>
               </table>

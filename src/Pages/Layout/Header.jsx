@@ -7,8 +7,8 @@ export const Header = () => {
   return (
     <>
       <nav
-        class="navbar navbar-expand-sm navbar-dark bg-light position-sticky"
-        style={{ top: 0, zIndex: 1030 }}
+        class="navbar navbar-expand-sm navbar-dark position-sticky"
+        style={{ top: 0, zIndex: 1030, background: "#343a40" }}
       >
         <div class="container-fluid">
           <a class="navbar-brand ms-2" href="javascript:void(0)">

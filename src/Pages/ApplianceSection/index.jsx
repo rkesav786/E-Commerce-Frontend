@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MobileCard } from "../MobileSection/MobileCard";
+import axios from "axios";
 
 export const ApplianceSection = () => {
-  const productDetailsProps = {
-    name: "Smart Tv",
-    description:
-      "(Finish Color - American Espresso, Delivery Condition - Knock Down)",
-    rating: 4.4,
-    price: 26999,
-    originalPrice: 16980,
-    imageUrl: "/electronicstvv.webp",
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/frontend/appliance-section"
+        );
+        setItems(response.data);
+        console.log("appliance-section :", response);
+      } catch (error) {
+        console.error("Error fetching items:", error);
+      }
+    };
+
+    fetchItems();
+  }, []);
+
+  // Filter data for each brand
+  const getBrandData = (brand) => {
+    return items.find((item) => item.section_name === brand)?.items || [];
   };
   return (
     <div>
@@ -231,14 +245,14 @@ export const ApplianceSection = () => {
         </div>
         <div className="col-9">
           <MobileCard
-            title={"Best Of Deal Furniture"}
-            productDetailsProps={productDetailsProps}
+            title={"Best Of Deal Appliance"}
+            sectionbrandcollection={getBrandData("IronBox")}
           />
-          <MobileCard />
+          {/* <MobileCard />
           <MobileCard />
           <div className="mb-3">
             <MobileCard />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

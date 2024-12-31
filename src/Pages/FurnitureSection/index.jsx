@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MobileCard } from "../MobileSection/MobileCard";
+import axios from "axios";
 
 export const FurnitureSection = () => {
-  const productDetailsProps = {
-    name: "iphone 15 pro max",
-    description:
-      "(Finish Color - American Espresso, Delivery Condition - Knock Down)",
-    rating: 4.4,
-    price: 26999,
-    originalPrice: 16980,
-    imageUrl: "/demofurniture.webp",
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5000/api/frontend/furniture-section"
+        );
+        setItems(response.data);
+        console.log("furniture-section :", response);
+      } catch (error) {
+        console.error("Error fetching items:", error);
+      }
+    };
+
+    fetchItems();
+  }, []);
+
+  // Filter data for each brand
+  const getBrandData = (brand) => {
+    return items.find((item) => item.section_name === brand)?.items || [];
   };
+
   return (
     <div>
       <div className="row">
@@ -232,13 +247,13 @@ export const FurnitureSection = () => {
         <div className="col-9">
           <MobileCard
             title={"Best Of Deal Furniture"}
-            productDetailsProps={productDetailsProps}
+            sectionbrandcollection={getBrandData("Sofa")}
           />
-          <MobileCard />
+          {/* <MobileCard />
           <MobileCard />
           <div className="mb-3">
             <MobileCard />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

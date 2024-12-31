@@ -15,18 +15,23 @@ export const HomeCards = ({ title }) => {
 
   return (
     <>
-      <div style={{ background: "#F8FAFC", position: "relative" }}>
+      <div
+        className="ms-3 me-3"
+        style={{ background: "#F8FAFC", position: "relative" }}
+      >
         <div className="h4 mb-3 mt-3 text-center">{title}</div>
         <div className="position-relative">
           {/* Left Arrow */}
           <button
-            className="btn btn-primary position-absolute"
+            className="btn rounded-0 position-absolute"
             style={{
               top: "50%",
               left: 0,
               transform: "translateY(-50%)",
-              opacity: 0.5,
+              opacity: 0.8,
               zIndex: 1,
+              background: "#D8D2C2",
+              height: "60px",
             }}
             onClick={scrollLeft}
           >
@@ -35,7 +40,7 @@ export const HomeCards = ({ title }) => {
 
           {/* Cards Wrapper */}
           <div
-            className="d-flex gap-4 mb-3 ms-2"
+            className="d-flex gap-4 mb-3 ms-4 p-2"
             style={{
               overflow: "hidden",
               whiteSpace: "nowrap",
@@ -45,8 +50,11 @@ export const HomeCards = ({ title }) => {
           >
             {Array.from({ length: 15 }).map((_, index) => (
               <div key={index} style={{ display: "inline-block" }}>
-                <Link to="/mobile-phones">
-                  <div className="card text-center p-3" style={{ width: 190 }}>
+                <Link to="/mobile-section">
+                  <div
+                    className="card border-0 rounded-0 text-center p-3"
+                    style={{ width: 190 }}
+                  >
                     <div className="card-img-top">
                       <img src="/samsungs23ultra.webp" width={160} alt="" />
                     </div>
@@ -64,13 +72,15 @@ export const HomeCards = ({ title }) => {
 
           {/* Right Arrow */}
           <button
-            className="btn btn-primary position-absolute"
+            className="btn rounded-0 position-absolute"
             style={{
               top: "50%",
               right: 0,
               transform: "translateY(-50%)",
-              opacity: 0.5,
+              opacity: 0.9,
               zIndex: 1,
+              background: "#D8D2C2",
+              height: "60px",
             }}
             onClick={scrollRight}
           >
