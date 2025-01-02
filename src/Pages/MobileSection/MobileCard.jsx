@@ -19,15 +19,6 @@ export const MobileCard = ({ title, sectionbrandcollection }) => {
     scrollRef.current.scrollBy({ left: 200, behavior: "smooth" });
   };
 
-  // const productDetails = sectionbrandcollection || {
-  //   name: "Samsung S23 Ultra Max",
-  //   description: "(Titanium Yellow, 256GB)",
-  //   rating: 4.5,
-  //   price: 125000,
-  //   originalPrice: 149000,
-  //   imageUrl: "/samsungs23ultra.webp",
-  // };
-
   return (
     <>
       <div className="mb-2 mt-3 ms-2 lead fw-bold">{title}</div>
@@ -50,41 +41,68 @@ export const MobileCard = ({ title, sectionbrandcollection }) => {
         </button>
 
         {/* Card Container */}
-        <div className="d-flex overflow-hidden m-2 " ref={scrollRef}>
+        <div
+          className="d-flex overflow-hidden m-2  position-relative "
+          ref={scrollRef}
+        >
           {sectionbrandcollection.map((item, index) => (
             <Link
               to="/product-details"
               state={item} // Passing product details through state
               key={index}
-              className="card border-0 rounded-0 mt-2 mx-2 mb-3 mt-1"
-              style={{ width: 190, flexShrink: 0, textDecoration: "none" }}
+              className={`card border-0 rounded-0 mt-2 mx-2 mb-3 mt-1 ${style.cataloguewrapcard}`}
+              style={{
+                width: 190,
+                flexShrink: 0,
+                textDecoration: "none",
+                height: 340,
+              }}
             >
-              <img
-                className="card-img-top p-3"
-                src={item.image.preview} // Access image from the item object
-                alt="Card image"
-              />
-              <div className="card-body rounded-0 border-0 text-center m-0 p-0">
-                <h4 className={`card-title m-0 p-0 ${style.card_title}`}>
-                  {item.name} {/* Access name from the item object */}
-                </h4>
-                <p className="m-0 p-0">
-                  <span className="badge bg-success">
-                    {item.tag} <CiStar />
-                  </span>
-                  <span className={`text-success ms-2 ${style.card_title}`}>
-                    25 % off
-                  </span>
-                </p>
-                <div className="m-0 p-0">
-                  <p className={`m-0 p-0 fw-bold ${style.card_title}`}>
-                    ₹ {item.offer_price} {/* Access offer_price */}
-                    <del>
-                      <span className="text-muted ms-2">
-                        ₹ {item.price} {/* Access price */}
-                      </span>
-                    </del>
+              <div
+                className="d-flex justify-content-center align-items-center"
+                style={{
+                  height: "250px", // Set a fixed height for the image container
+                  overflow: "hidden", // Prevent large images from spilling out
+                }}
+              >
+                <img
+                  className="img-fluid p-3"
+                  src={item.image.preview}
+                  style={{
+                    width: "auto", // Maintain aspect ratio
+                    maxHeight: "90%", // Scale the image proportionally
+                    maxWidth: "90%", // Prevent the image from overflowing
+                  }}
+                  alt="Card image"
+                />
+              </div>
+
+              <div>
+                <div
+                  className="card-body rounded-0 border0 text-center position-absolute  p-3"
+                  style={{ bottom: "0px" }}
+                >
+                  <h4 className={`card-title m-0 p-0 ${style.card_title}`}>
+                    {item.name} {/* Access name from the item object */}
+                  </h4>
+                  <p className="m-0 p-0">
+                    <span className="badge bg-success">
+                      {item.tag} <CiStar />
+                    </span>
+                    <span className={`text-success ms-2 ${style.card_title}`}>
+                      25 % off
+                    </span>
                   </p>
+                  <div className="m-0 p-0">
+                    <p className={`m-0 p-0 fw-bold ${style.card_title}`}>
+                      ₹ {item.offer_price} {/* Access offer_price */}
+                      <del>
+                        <span className="text-muted ms-2">
+                          ₹ {item.price} {/* Access price */}
+                        </span>
+                      </del>
+                    </p>
+                  </div>
                 </div>
               </div>
             </Link>

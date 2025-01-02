@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 
-export const HomeCards = ({ title }) => {
+export const HomeCards = ({ title, data }) => {
   const scrollRef = useRef(null);
+  console.log("data :", data);
 
   // Scroll handler functions
   const scrollLeft = () => {
@@ -48,21 +49,25 @@ export const HomeCards = ({ title }) => {
             }}
             ref={scrollRef}
           >
-            {Array.from({ length: 15 }).map((_, index) => (
+            {data.map((item, index) => (
               <div key={index} style={{ display: "inline-block" }}>
-                <Link to="/mobile-section">
+                <Link
+                  to="/mobile-section"
+                  className="card border-0 rounded-0 mt-2 mx-2 mb-3 mt-1"
+                  style={{ width: 190, flexShrink: 0, textDecoration: "none" }}
+                >
                   <div
                     className="card border-0 rounded-0 text-center p-3"
                     style={{ width: 190 }}
                   >
                     <div className="card-img-top">
-                      <img src="/samsungs23ultra.webp" width={160} alt="" />
+                      <img src={item.brand_img.preview} width={160} alt="" />
                     </div>
                     <div className="card-title mt-3 mb-0 p-0 h6">
-                      Samsung Phones
+                      {item.brand_name}
                     </div>
                     <div className="card-text m-0 p-0 fw-bold">
-                      Starting from ₹7999
+                      {item.starting_from}
                     </div>
                   </div>
                 </Link>

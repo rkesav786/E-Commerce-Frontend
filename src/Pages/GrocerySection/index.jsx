@@ -246,11 +246,14 @@ export const GrocerySection = () => {
         </div>
         <div className="col-9">
           <MobileCard
-            title={"Best Of Deal Furniture"}
+            title={"Best Of Deal Grocery"}
             sectionbrandcollection={getBrandData("Grocery")}
           />
+          <MobileCard
+            title={"Best Of Deal Personal & Care"}
+            sectionbrandcollection={getBrandData("Personal&Care")}
+          />
           {/* <MobileCard />
-          <MobileCard />
           <div className="mb-3">
             <MobileCard />
           </div> */}

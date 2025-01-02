@@ -1,6 +1,7 @@
 import React from "react";
 import { CiStar } from "react-icons/ci";
 import { useLocation } from "react-router-dom";
+import style from "./style.module.css";
 
 export const ProductDetails = () => {
   const location = useLocation();
@@ -23,7 +24,7 @@ export const ProductDetails = () => {
     <>
       {/* <div>ProductDetails</div> */}
       <div className="container">
-        <div className="row">
+        <div className={`row ${style.details_container} `}>
           <div className="col-12 col-md-5">
             <div className="m-3 p-3 border img-fluid">
               <img src={catalogue.image.preview} alt="" />

@@ -5,6 +5,7 @@ import axios from "axios";
 export const FurnitureSection = () => {
   const [items, setItems] = useState([]);
 
+
   useEffect(() => {
     const fetchItems = async () => {
       try {
@@ -12,7 +13,6 @@ export const FurnitureSection = () => {
           "http://localhost:5000/api/frontend/furniture-section"
         );
         setItems(response.data);
-        console.log("furniture-section :", response);
       } catch (error) {
         console.error("Error fetching items:", error);
       }

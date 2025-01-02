@@ -5,7 +5,7 @@ import { HomeCards } from "../../Component/HomePage/HomeCards";
 import axios from "axios";
 
 export const HomePage = () => {
-  const [items, setItems] = useState({}); // Initialize as an object since your data is structured as key-value pairs
+  const [items, setItems] = useState(null);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -13,8 +13,8 @@ export const HomePage = () => {
         const response = await axios.get(
           "http://localhost:5000/api/frontend/home-page"
         );
-        setItems(response.data);
-        console.log("home-page :", response.data);
+        // Since HomePage.find() returns an array, we take the first document
+        setItems(response.data[0] || null);
       } catch (error) {
         console.error("Error fetching items:", error);
       }
@@ -23,37 +23,25 @@ export const HomePage = () => {
     fetchItems();
   }, []);
 
-  // Get data by brand
-  const getBrandData = (brand) => {
-    return items[brand] || []; // Safely return an empty array if the key is undefined
+  const getBrandData = (brandType) => {
+    return items?.[brandType] || [];
   };
 
   return (
-    <>
-      <div>
-        <ThumbCard />
-        <Carousel />
-        <HomeCards
-          title={"Mobile Phones"}
-          data={getBrandData("mobile_items")} // Pass brand data correctly
-        />
-        {/* <HomeCards
-          title={"Grocery"}
-          data={getBrandData("grocery_items")}
-        />
-        <HomeCards
-          title={"Electronics"}
-          data={getBrandData("electronics_items")}
-        />
-        <HomeCards
-          title={"Appliance"}
-          data={getBrandData("appliance_items")}
-        />
-        <HomeCards
-          title={"Fashion"}
-          data={getBrandData("fashion_items")}
-        /> */}
-      </div>
-    </>
+    <div>
+      <ThumbCard />
+      <Carousel />
+      <HomeCards title="Mobile Phones" data={getBrandData("mobile_items")} />
+      <HomeCards
+        title="Mobile Phones"
+        data={getBrandData("electronics_items")}
+      />
+      <HomeCards title="Mobile Phones" data={getBrandData("appliance_items")} />
+      <HomeCards title="Mobile Phones" data={getBrandData("fashion_items")} />
+      <HomeCards title="Mobile Phones" data={getBrandData("furniture_items")} />
+      <HomeCards title="Mobile Phones" data={getBrandData("grocery_items")} />
+
+      {/* <HomeCards title="Electronics" data={getBrandData("electronics_items")} /> */}
+    </div>
   );
 };
