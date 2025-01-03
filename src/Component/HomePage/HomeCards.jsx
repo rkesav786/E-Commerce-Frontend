@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 
-export const HomeCards = ({ title, data }) => {
+export const HomeCards = ({ title, data, path }) => {
   const scrollRef = useRef(null);
   console.log("data :", data);
 
@@ -52,7 +52,7 @@ export const HomeCards = ({ title, data }) => {
             {data.map((item, index) => (
               <div key={index} style={{ display: "inline-block" }}>
                 <Link
-                  to="/mobile-section"
+                  to={path}
                   className="card border-0 rounded-0 mt-2 mx-2 mb-3 mt-1"
                   style={{ width: 190, flexShrink: 0, textDecoration: "none" }}
                 >
@@ -61,13 +61,22 @@ export const HomeCards = ({ title, data }) => {
                     style={{ width: 190 }}
                   >
                     <div className="card-img-top">
-                      <img src={item.brand_img.preview} width={160} alt="" />
+                      <img
+                        src={item.brand_img.preview}
+                        alt=""
+                        className="img-fluid w-100 rounded"
+                        style={{
+                          objectFit: "contain", // Ensures the image fits within its container
+                          height: "150px", // Set a consistent height for all images
+                          width: "auto", // Adjust the width automatically based on aspect ratio
+                        }}
+                      />
                     </div>
                     <div className="card-title mt-3 mb-0 p-0 h6">
                       {item.brand_name}
                     </div>
                     <div className="card-text m-0 p-0 fw-bold">
-                      {item.starting_from}
+                      Starting From {item.starting_from}
                     </div>
                   </div>
                 </Link>

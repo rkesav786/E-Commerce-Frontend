@@ -2,6 +2,7 @@ import React from "react";
 import logo from "/flipcart.svg";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -11,9 +12,9 @@ export const Header = () => {
         style={{ top: 0, zIndex: 5, background: "white" }}
       >
         <div class="container-fluid">
-          <a class="navbar-brand ms-2" href="javascript:void(0)">
+          <Link class="navbar-brand ms-2" to="/">
             <img src="./vetrikart_logo.png" alt="" width={50} />
-          </a>
+          </Link>
           <button
             class="navbar-toggler"
             type="button"
@@ -36,10 +37,12 @@ export const Header = () => {
               </form>
             </div>
             <div>
-              <button className="btn btn-white" type="button">
-                <MdOutlineAccountCircle size={24} className="me-2" />
-                Account
-              </button>
+              <Link to="account" style={{ textDecoration: "none" }}>
+                <button className="btn btn-white" type="button">
+                  <MdOutlineAccountCircle size={24} className="me-2" />
+                  Account
+                </button>
+              </Link>
             </div>
             <div>
               <button className="btn btn-white" type="button">

@@ -31,15 +31,36 @@ export const HomePage = () => {
     <div>
       <ThumbCard />
       <Carousel />
-      <HomeCards title="Mobile Phones" data={getBrandData("mobile_items")} />
       <HomeCards
         title="Mobile Phones"
-        data={getBrandData("electronics_items")}
+        data={getBrandData("mobile_items")}
+        path={"/mobile-section"}
       />
-      <HomeCards title="Mobile Phones" data={getBrandData("appliance_items")} />
-      <HomeCards title="Mobile Phones" data={getBrandData("fashion_items")} />
-      <HomeCards title="Mobile Phones" data={getBrandData("furniture_items")} />
-      <HomeCards title="Mobile Phones" data={getBrandData("grocery_items")} />
+      <HomeCards
+        title="Electronics Phones"
+        data={getBrandData("electronics_items")}
+        path={"/electronics-section"}
+      />
+      <HomeCards
+        title="Appliance Phones"
+        data={getBrandData("appliance_items")}
+        path={"/appliance-section"}
+      />
+      <HomeCards
+        title="Fashion Phones"
+        data={getBrandData("fashion_items")}
+        path={"/fashion-section"}
+      />
+      <HomeCards
+        title="Furniture Phones"
+        data={getBrandData("furniture_items")}
+        path={"/furniture-section"}
+      />
+      <HomeCards
+        title="Grocery Phones"
+        data={getBrandData("grocery_items")}
+        path={"/grocery-section"}
+      />
 
       {/* <HomeCards title="Electronics" data={getBrandData("electronics_items")} /> */}
     </div>
